@@ -17,6 +17,8 @@ public class Main {
         myList.add("czwartek");
         myList.add("piatek");
 
+        logger.error((myList).returnListAsString());
+
         //chcemy utworzyc wlasna liste
         //1. dodac do niej wartosci kolejno dni tygodnia
         //2. wyswietlenie wszystkich elementow listy
