@@ -6,6 +6,23 @@ public class MyElement {
     private MyElement nextElemnt;
 
     public MyElement(String myElementString) {
-        this
+        this.myString = myElementString;
+        this.nextElemnt = null;
+    }
+
+    public String getMyString() {
+        return myString;
+    }
+
+    public void setMyString(String myString) {
+        this.myString = myString;
+    }
+
+    public MyElement getNextElemnt() {
+        return nextElemnt;
+    }
+
+    public void setNextElemnt(MyElement nextElemnt) {
+        this.nextElemnt = nextElemnt;
     }
 }

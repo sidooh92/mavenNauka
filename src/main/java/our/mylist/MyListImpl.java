@@ -5,7 +5,7 @@ public class MyListImpl implements MyList{
     private MyElement firstElement;
     private MyElement lastElement;
 
-    public MyListImpl(MyElement firstElement) {
+    public MyListImpl() {
         this.firstElement = null;
     }
 
@@ -19,11 +19,14 @@ public class MyListImpl implements MyList{
             this.lastElement = myElementToAdd;
         }
         else {
+            MyElement temporaryElement = this.lastElement;
+            temporaryElement.setNextElemnt(myElementToAdd);
+            this.lastElement = myElementToAdd;
 
-
-        }
-
-
+              }
+    }
+    private boolean listIsEmpty() {
+        return this.firstElement == null;
 
     }
 }
