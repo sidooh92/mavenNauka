@@ -10,7 +10,17 @@ public class Main {
 
     public static void main(String[] args) {
 
-        logger.info("TEST");
+        logger.info("BEGIN");
+        MyStackElem jan = new MyStackElem("January");
+        MyStackElem feb = new MyStackElem("February");
+        MyStackElem mar = new MyStackElem("March");
+
+        MyStack myStack = new MyStackImpl();
+        myStack.push(jan);
+        myStack.push(feb);
+        myStack.push(mar);
+
+        logger.info("END");
     }
 
 
