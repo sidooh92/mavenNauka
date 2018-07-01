@@ -18,6 +18,8 @@ public class Main {
         myList.add("piatek");
 
         logger.info(myList.returnListAsString());
+        logger.info("sisze of list {} {}",
+                myList.getSize(), myList.getSize());
 
         //chcemy utworzyc wlasna liste
         //1. dodac do niej wartosci kolejno dni tygodnia
