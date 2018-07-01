@@ -44,28 +44,28 @@ public class MyListImpl implements MyList {
 
         //3 warianty
         //usuwanie pierwszego elementu
-                //przecstawic firstElement na "drugi" obiekt listy
-                //w usuwanym elemencie ustawic next na null
+        //przecstawic firstElement na "drugi" obiekt listy
+        //w usuwanym elemencie ustawic next na null
         //usuwanie srodkowego elementu
         //usuwanie ostatniego elementu
 
 
-        if(this.firstElement.getMyString().equals(element)) {
+        if (this.firstElement.getMyString().equals(element)) {
             MyElement temporary = this.firstElement;
             this.firstElement = this.firstElement.getNextElemnt();
+        } else {
+            MyElement temporaryPrev = firstElement;
+            MyElement temporaryCurrent = firstElement.getNextElemnt();
+            MyElement temporaryNext = temporaryCurrent.getNextElemnt();
+
+            while (!temporaryCurrent.getMyString().equals(element)) {
+                temporaryPrev = temporaryCurrent;
+                temporaryCurrent = temporaryCurrent.getNextElemnt();
+                temporaryNext = temporaryCurrent.getNextElemnt();
+            }
+            temporaryPrev.setNextElemnt(temporaryNext);
+
         }
-        else {
-//           temporary = firstElement;
-//            while (!temporary.getNextElemnt().
-//                    getMyString().equals(element)) {
-//
-//                temporary = temporary.getNextElemnt();
-//            }
-
-
-
-        }
-
 
 
     }
