@@ -27,17 +27,47 @@ public class MyListImpl implements MyList {
     public String returnListAsString() {
         String wynik = "";
         MyElement temporary = this.firstElement;
-        while(temporary != null) {
+        while (temporary != null) {
             wynik += temporary.getMyString() + ",";
             temporary = temporary.getNextElemnt();
         }
         return wynik;
-        ///String ktory ma wartosc  poniedzialek, wtorek, sroda
     }
 
     @Override
     public int getSize() {
         return 0;
+    }
+
+    @Override
+    public void remove(String element) {
+
+        //3 warianty
+        //usuwanie pierwszego elementu
+                //przecstawic firstElement na "drugi" obiekt listy
+                //w usuwanym elemencie ustawic next na null
+        //usuwanie srodkowego elementu
+        //usuwanie ostatniego elementu
+
+
+        if(this.firstElement.getMyString().equals(element)) {
+            MyElement temporary = this.firstElement;
+            this.firstElement = this.firstElement.getNextElemnt();
+        }
+        else {
+//           temporary = firstElement;
+//            while (!temporary.getNextElemnt().
+//                    getMyString().equals(element)) {
+//
+//                temporary = temporary.getNextElemnt();
+//            }
+
+
+
+        }
+
+
+
     }
 
 
