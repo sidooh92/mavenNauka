@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        logger.error("TEST");
+        logger.info("TEST");
 
         MyList myList = new MyListImpl();
         myList.add("poniedzialek");
@@ -17,7 +17,7 @@ public class Main {
         myList.add("czwartek");
         myList.add("piatek");
 
-        logger.error((myList).returnListAsString());
+        logger.info(myList.returnListAsString());
 
         //chcemy utworzyc wlasna liste
         //1. dodac do niej wartosci kolejno dni tygodnia

@@ -35,6 +35,11 @@ public class MyListImpl implements MyList {
         ///String ktory ma wartosc  poniedzialek, wtorek, sroda
     }
 
+    @Override
+    public int getSize() {
+        return 0;
+    }
+
 
     private boolean listIsEmpty() {
         return this.firstElement == null;
