@@ -4,6 +4,7 @@ public class MyListImpl implements MyList {
 
     private MyElement firstElement;
     private MyElement lastElement;
+    private int size = 0;
 
     public MyListImpl() {
         this.firstElement = null;
@@ -11,6 +12,7 @@ public class MyListImpl implements MyList {
 
     @Override
     public void add(String myElementString) {
+        size++;
         MyElement myElementToAdd =
                 new MyElement(myElementString);
 
@@ -36,22 +38,12 @@ public class MyListImpl implements MyList {
 
     @Override
     public int getSize() {
-        return 0;
+        return size;
     }
 
     @Override
     public void remove(String element) {
-
-        //3 warianty
-        //usuwanie pierwszego elementu
-        //przecstawic firstElement na "drugi" obiekt listy
-        //w usuwanym elemencie ustawic next na null
-        //usuwanie srodkowego elementu
-        //usuwanie ostatniego elementu
-
-
         if (this.firstElement.getMyString().equals(element)) {
-            MyElement temporary = this.firstElement;
             this.firstElement = this.firstElement.getNextElemnt();
         } else {
             MyElement temporaryPrev = firstElement;
@@ -63,8 +55,14 @@ public class MyListImpl implements MyList {
                 temporaryCurrent = temporaryCurrent.getNextElemnt();
                 temporaryNext = temporaryCurrent.getNextElemnt();
             }
+            if(temporaryCurrent.getMyString().equals
+                    (lastElement.getMyString())) {
+                this.lastElement = temporaryPrev;
+            }
+
             temporaryPrev.setNextElemnt(temporaryNext);
 
+            size--;
         }
 
 
