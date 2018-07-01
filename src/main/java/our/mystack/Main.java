@@ -11,14 +11,13 @@ public class Main {
     public static void main(String[] args) {
 
         logger.info("BEGIN");
-        MyStackElem jan = new MyStackElem("January");
-        MyStackElem feb = new MyStackElem("February");
-        MyStackElem mar = new MyStackElem("March");
+        MyStackElem<String> jan = new MyStackElem("January");
+        MyStackElem<String> feb = new MyStackElem("February");
+        MyStackElem<String> mar = new MyStackElem("March");
 
         MyStack myStack = new MyStackImpl();
         myStack.push(jan);
-        myStack.push(feb);
-        myStack.push(mar);
+        myStack.push(jan);
 
         logger.info("END");
     }

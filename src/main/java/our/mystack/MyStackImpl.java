@@ -1,5 +1,7 @@
 package our.mystack;
 
+import java.util.EmptyStackException;
+
 public class MyStackImpl implements MyStack {
 
     private int size = 0;
@@ -20,7 +22,7 @@ public class MyStackImpl implements MyStack {
             this.first = this.first.getNext();
             return temporary;
         }
-        return null;
+        throw new EmptyStackException();
     }
 
     @Override
@@ -30,9 +32,13 @@ public class MyStackImpl implements MyStack {
 
     @Override
     public String getAllElementOfStack() {
-
-
-        return null;
+        MyStackElem temp = first;
+        String result = "";
+        while(temp != null) {
+            result += temp.getContent();
+            temp = temp.getNext();
+        }
+        return result;
     }
 
     @Override

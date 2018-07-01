@@ -1,18 +1,18 @@
 package our.mystack;
 
-public class MyStackElem {
-    private String content;
+public class MyStackElem<T> {
+    private T content;
     private MyStackElem next;
 
-    public MyStackElem(String content) {
+    public MyStackElem(T content) {
         this.content = content;
     }
 
-    public String getContent() {
+    public T getContent() {
         return content;
     }
 
-    public void setContent(String content) {
+    public void setContent(T content) {
         this.content = content;
     }
 
