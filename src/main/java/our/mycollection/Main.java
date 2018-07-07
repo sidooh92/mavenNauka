@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        logger.info("TEST");
+        logger.info("Logger is working");
 
         MyCollection myCollection = new MyCollectionImpl();
         myCollection.enqueue(new MyNode("poniedzialek"));
@@ -19,13 +19,13 @@ public class Main {
         myCollection.enqueue(new MyNode("czwartek"));
         myCollection.enqueue(new MyNode("piatek"));
 
-        logger.info(myCollection.returnListAsString());
-        logger.info("sisze of list {}",  myCollection.getSize());
+        logger.info(myCollection.returnCollectionAsString());
+        logger.info("sisze of collection {}",  myCollection.getSize());
 
-        logger.info("element of colelction {}", myCollection.dequeue());
+        logger.info("dequeue element of collection {}", myCollection.dequeue());
 
-        logger.info(myList.returnListAsString());
-        logger.info("sisze of list {}",  myCollection.getSize());
+        logger.info(myCollection.returnCollectionAsString());
+        logger.info("size of collection {}",  myCollection.getSize());
     }
 
 
