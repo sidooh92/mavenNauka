@@ -1,5 +1,8 @@
 package our.mytree;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class MyTreeImpl implements MyTree {
 
     private Node root = null;
@@ -9,14 +12,14 @@ public class MyTreeImpl implements MyTree {
         if (root == null) {
             root = new Node(key);
         } else {
-            Node actual = root;
+            Node temp = root;
             Node parent = null;
-            while (actual != null) {
-                parent = actual;
-                if (actual.getKey() > key) {
-                    actual = actual.getLeft();
+            while (temp != null) {
+                parent = temp;
+                if (temp.getKey() > key) {
+                    temp = temp.getLeft();
                 } else {
-                    actual = actual.getRight();
+                    temp = temp.getRight();
                 }
             }
             if (parent.getKey() > key) {
@@ -32,18 +35,31 @@ public class MyTreeImpl implements MyTree {
     }
 
     @Override
-    public void search(int i) {
-
+    public boolean search(int key) {
+        Node temp = root;
+        while(temp !=  null && temp.getKey()!= key) {
+        temp = temp.getKey() > key ?
+                temp.getLeft() : temp.getRight();
+        }
+        return temp != null;
     }
 
     @Override
     public void min() {
-
+        Node minNode = root;
+        while (minNode.getLeft() != null) {
+            minNode = minNode.getLeft();
+        }
+        log.info("MIN: {}", minNode.getKey());
     }
 
     @Override
     public void max() {
-
+        Node maxNode = root;
+        while (maxNode.getRight() != null) {
+            maxNode = maxNode.getRight();
+        }
+        log.info("MAX: {}", maxNode.getKey());
     }
 
     @Override
