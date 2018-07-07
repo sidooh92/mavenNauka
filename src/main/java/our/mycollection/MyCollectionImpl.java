@@ -27,7 +27,7 @@ public class MyCollectionImpl implements MyCollection {
             temporary = temporary.getNextElemnt();
         }
         MyNode tempResult = firstElement;
-        tempResult.setNextElemnt(null);
+        temporary.setNextElemnt(null);
         firstElement = temporary;
         size--;
         return tempResult;
