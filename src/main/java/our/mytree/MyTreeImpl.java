@@ -35,13 +35,13 @@ public class MyTreeImpl implements MyTree {
     }
 
     @Override
-    public boolean search(int key) {
+    public Node search(int key) {
         Node temp = root;
         while(temp !=  null && temp.getKey()!= key) {
         temp = temp.getKey() > key ?
                 temp.getLeft() : temp.getRight();
         }
-        return temp != null;
+        return temp;
     }
 
     @Override
@@ -65,20 +65,32 @@ public class MyTreeImpl implements MyTree {
     @Override
     public void remove(int i) {
 
+
+
+
+
+
+
+
+
+
+
+
+        
     }
 
     @Override
-    public void showInOrder() {
+    public void showInOrder(Node node)
+    {
+    }
+
+    @Override
+    public void showPreOrder(Node node)  {
 
     }
 
     @Override
-    public void showPreOrder() {
-
-    }
-
-    @Override
-    public void showPostOrder() {
+    public void showPostOrder(Node node)  {
 
     }
 }
