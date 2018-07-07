@@ -22,15 +22,15 @@ public class Main {
         myTree.insert(6);
         myTree.insert(7);
         myTree.insert(8);
-
-        myTree.search(5);
-        myTree.min();
-        myTree.max();
-
-        myTree.remove(3);
-        myTree.showInOrder();
-        myTree.showPreOrder();
-        myTree.showPostOrder();
+//
+//        myTree.search(5);
+//        myTree.min();
+//        myTree.max();
+//
+//        myTree.remove(3);
+//        myTree.showInOrder();
+//        myTree.showPreOrder();
+//        myTree.showPostOrder();
 
 
 
