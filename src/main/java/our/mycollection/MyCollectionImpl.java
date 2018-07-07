@@ -17,25 +17,36 @@ public class MyCollectionImpl implements MyCollection {
             myNode.setNextElemnt(this.lastElement);
             this.lastElement = myNode;
         }
+        size++;
     }
 
     @Override
     public MyNode dequeue() {
+        MyNode temporary = this.lastElement;
+        while (temporary.getNextElemnt() != firstElement) {
+            temporary = temporary.getNextElemnt();
+        }
+        MyNode tempResult = firstElement;
+        tempResult.setNextElemnt(null);
+        firstElement = temporary;
+        size--;
+        return tempResult;
 
-
-        //2 PODEJSCIA
-
-
-        return null;
     }
 
     @Override
     public int getSize() {
-        return 0;
+        return size;
     }
 
     @Override
     public String returnCollectionAsString() {
-        return null;
+        String wynik = "";
+        MyNode temporary = this.lastElement;
+        while (temporary != null) {
+            wynik += temporary.getMyString() + ",";
+            temporary = temporary.getNextElemnt();
+        }
+        return wynik;
     }
 }
