@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MyTreeImpl implements MyTree {
 
-    private Node root = null;
+    public Node root = null;
 
     @Override
     public void insert(int key) {
@@ -71,12 +71,12 @@ public class MyTreeImpl implements MyTree {
         Node temp;
         if (nodeToRemove.getLeft() != null &&
                 nodeToRemove.getRight() != null) {
-                temp = this.remove(this.sucessor(key).key);
-                if(temp.getLeft() != null)
-                    temp.getLeft().setParent(temp);
-                temp.setParent(nodeToRemove.right);
-                if(temp.getRight() != null)
-                    temp.getRight().setParent(temp);
+            temp = this.remove(this.sucessor(key).key);
+            if (temp.getLeft() != null)
+                temp.getLeft().setParent(temp);
+            temp.setParent(nodeToRemove.right);
+            if (temp.getRight() != null)
+                temp.getRight().setParent(temp);
         } else
             temp = nodeToRemove.getLeft() != null ?
                     nodeToRemove.getLeft() : nodeToRemove.getRight();
@@ -96,26 +96,31 @@ public class MyTreeImpl implements MyTree {
     private Node sucessor(int key) throws Exception {
         Node node = this.search(key);
 
-        if(node.getLeft() != null) {
+        if (node.getLeft() != null) {
             node = node.getLeft();
-            while(node.right != null) {
+            while (node.right != null) {
                 node = node.right;
             }
             return node;
-        } else if(node.getLeft() == null && node !=
+        } else if (node.getLeft() == null && node !=
                 this.root && node != this.min()) {
             Node parent = node.getParent();
             while (parent != root && parent.getKey() > node.getKey()) {
                 parent = parent.getParent();
             }
             return parent;
-        }
-            else throw new Exception("NIE MA");
-        }
+        } else throw new Exception("NIE MA");
+    }
 
 
     @Override
     public void showInOrder(Node node) {
+
+        if(node != null) {
+            showInOrder(node.getLeft());
+            log.info("KEY VALUE: {}",node.key);
+            showInOrder(node.getRight());
+        }
     }
 
     @Override
