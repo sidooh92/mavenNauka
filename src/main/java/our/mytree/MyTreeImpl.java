@@ -72,7 +72,11 @@ public class MyTreeImpl implements MyTree {
         if (nodeToRemove.getLeft() != null &&
                 nodeToRemove.getRight() != null) {
                 temp = this.remove(this.sucessor(key).key);
-
+                if(temp.getLeft() != null)
+                    temp.getLeft().setParent(temp);
+                temp.setParent(nodeToRemove.right);
+                if(temp.getRight() != null)
+                    temp.getRight().setParent(temp);
         } else
             temp = nodeToRemove.getLeft() != null ?
                     nodeToRemove.getLeft() : nodeToRemove.getRight();
