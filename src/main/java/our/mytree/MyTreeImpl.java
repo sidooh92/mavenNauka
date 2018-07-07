@@ -37,60 +37,90 @@ public class MyTreeImpl implements MyTree {
     @Override
     public Node search(int key) {
         Node temp = root;
-        while(temp !=  null && temp.getKey()!= key) {
-        temp = temp.getKey() > key ?
-                temp.getLeft() : temp.getRight();
+        while (temp != null && temp.getKey() != key) {
+            temp = temp.getKey() > key ?
+                    temp.getLeft() : temp.getRight();
         }
         return temp;
     }
 
     @Override
-    public void min() {
+    public Node min() {
         Node minNode = root;
         while (minNode.getLeft() != null) {
             minNode = minNode.getLeft();
         }
         log.info("MIN: {}", minNode.getKey());
+        return minNode;
     }
 
     @Override
-    public void max() {
+    public Node max() {
         Node maxNode = root;
         while (maxNode.getRight() != null) {
             maxNode = maxNode.getRight();
         }
         log.info("MAX: {}", maxNode.getKey());
+        return maxNode;
     }
 
     @Override
-    public void remove(int i) {
+    public Node remove(int key) throws Exception {
+        Node nodeToRemove = this.search(key);
+        Node parentOfNodeToRemove = nodeToRemove.getParent();
+        Node temp;
+        if (nodeToRemove.getLeft() != null &&
+                nodeToRemove.getRight() != null) {
+                temp = this.remove(this.sucessor(key).key);
+
+        } else
+            temp = nodeToRemove.getLeft() != null ?
+                    nodeToRemove.getLeft() : nodeToRemove.getRight();
+        if (temp != null) {
+            temp.setParent(parentOfNodeToRemove);
+        }
+        if (parentOfNodeToRemove == null) {
+            root = temp;
+        } else if (parentOfNodeToRemove.getLeft() == nodeToRemove) {
+            parentOfNodeToRemove.setLeft(temp);
+        } else {
+            parentOfNodeToRemove.setRight(temp);
+        }
+        return nodeToRemove;
+    }
+
+    private Node sucessor(int key) throws Exception {
+        Node node = this.search(key);
+
+        if(node.getLeft() != null) {
+            node = node.getLeft();
+            while(node.right != null) {
+                node = node.right;
+            }
+            return node;
+        } else if(node.getLeft() == null && node !=
+                this.root && node != this.min()) {
+            Node parent = node.getParent();
+            while (parent != root && parent.getKey() > node.getKey()) {
+                parent = parent.getParent();
+            }
+            return parent;
+        }
+            else throw new Exception("NIE MA");
+        }
 
 
-
-
-
-
-
-
-
-
-
-
-        
+    @Override
+    public void showInOrder(Node node) {
     }
 
     @Override
-    public void showInOrder(Node node)
-    {
-    }
-
-    @Override
-    public void showPreOrder(Node node)  {
+    public void showPreOrder(Node node) {
 
     }
 
     @Override
-    public void showPostOrder(Node node)  {
+    public void showPostOrder(Node node) {
 
     }
 }
