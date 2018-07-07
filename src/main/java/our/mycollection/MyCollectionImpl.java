@@ -10,18 +10,22 @@ public class MyCollectionImpl implements MyCollection {
 
     @Override
     public void enqueue(MyNode myNode) {
-        //TODO: JEZELI KOLEJKA JEST PUSTA TO
-        // FIRST I LAST WSKAZUJA
-        // NA TEN SAM NOWT ELEMENT
-
-        //TODO: WIECEJ ELEMENTOW
-        //PIERWSZY ZOSTAJE BEZ ZMIAN, DRUGI JEST OSTATNIM
-
-
+        if (this.firstElement == null) {
+            this.firstElement = myNode;
+            this.lastElement = myNode;
+        } else {
+            myNode.setNextElemnt(this.lastElement);
+            this.lastElement = myNode;
+        }
     }
 
     @Override
     public MyNode dequeue() {
+
+
+        //2 PODEJSCIA
+
+
         return null;
     }
 
