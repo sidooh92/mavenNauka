@@ -72,16 +72,17 @@ public class MyTreeImpl implements MyTree {
         if (nodeToRemove.getLeft() != null &&
                 nodeToRemove.getRight() != null) {
             temp = this.remove(this.sucessor(key).key);
+            temp.setLeft(nodeToRemove.getLeft());
             if (temp.getLeft() != null)
                 temp.getLeft().setParent(temp);
-            temp.setParent(nodeToRemove.right);
+            temp.setRight(nodeToRemove.right);
             if (temp.getRight() != null)
                 temp.getRight().setParent(temp);
         } else
             temp = nodeToRemove.getLeft() != null ?
                     nodeToRemove.getLeft() : nodeToRemove.getRight();
         if (temp != null) {
-            temp.setParent(parentOfNodeToRemove);
+            nodeToRemove.setParent(parentOfNodeToRemove);
         }
         if (parentOfNodeToRemove == null) {
             root = temp;
@@ -96,16 +97,16 @@ public class MyTreeImpl implements MyTree {
     private Node sucessor(int key) throws Exception {
         Node node = this.search(key);
 
-        if (node.getLeft() != null) {
-            node = node.getLeft();
-            while (node.right != null) {
-                node = node.right;
+        if (node.getRight() != null) {
+            node = node.getRight();
+            while (node.getLeft() != null) {
+                node = node.getLeft();
             }
             return node;
-        } else if (node.getLeft() == null && node !=
-                this.root && node != this.min()) {
+        } else if (node.getRight() == null && node !=
+                this.root && node != this.max()) {
             Node parent = node.getParent();
-            while (parent != root && parent.getKey() > node.getKey()) {
+            while (parent != root && parent.getKey() < node.getKey()) {
                 parent = parent.getParent();
             }
             return parent;
