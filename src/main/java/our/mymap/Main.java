@@ -15,7 +15,7 @@ public class Main {
         //log.info("{}",map.get("Maj"));
         //nastpenie wyswietl zawartosc mapy uzywajac iteratora
         //wykorzystac entrySet i iterator hasNext i map.entry
-
+                         map.entrySet();
         Set set = map.entrySet();
         Iterator iterator = set.iterator(); //mapa nie implementuje
         while(iterator.hasNext()) {
