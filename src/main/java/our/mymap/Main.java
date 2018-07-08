@@ -12,8 +12,10 @@ public class Main {
         map.put("Maj", asciValueOfMonth("Maj"));
         map.put("Czerwiec", asciValueOfMonth("Czerwiec"));
         map.put("Lipiec", asciValueOfMonth("Lipiec"));
-
         map.put("KWIECIEN", asciValueOfMonth("kwiecien"));
+
+        map.remove("Maj");
+
         log.info("{}",map.get("Maj"));
         }
 

@@ -29,13 +29,34 @@ public class OurMap<K, V> {
     }
 
     private void makeOurArrayBigger() {
-        if ((size - 2) == values.length) {
+        if (size > 0 && (size - 2) == values.length) {
             values = Arrays.copyOf(values, values.length * 4);
         }
     }
 
     public V get(K key) {
+        for (int i = 0; i < size; i++) {
+            if (values[i].getKey().equals(key)) {
+                return values[i].getValue();
+            }
+        }
         return null;
+    }
+
+    public void remove(K key) {
+        for (int i = 0; i < size; i++) {
+            if (values[i].getKey().equals(key)) {
+               values[i] = null;
+               size--;
+               for(int j = i; j <size; j++) {
+                   values[j] = values[j+1];
+               }
+               values[size] = null;
+            }
+        }
+
+
+
     }
 
     public int size() {
