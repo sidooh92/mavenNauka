@@ -75,9 +75,6 @@ public class OurMapImpl<K, V> implements OurMap<K, V> {
     public Set<K> keySet() {
         return null;
     }
-    //contains -> boolean,
-    // values() -> List<V> ,
-    // keySet() -> Set<K>
 
 
     @Override
