@@ -143,6 +143,20 @@ public class MyTreeImpl implements MyTree {
 
     @Override
     public void showPostOrder(Node node) {
+            if(node != null) {
+                showPostOrder(node.getLeft());
+                showPostOrder(node.getRight());
 
+                System.out.print(node.getKey() + ", ");
+                if(node.getLeft() != null) {
+                    System.out.print(node.getLeft().getKey() + ", ");
+                } else  System.out.print("-"+ ", ");
+                if(node.getRight() != null) {
+                    System.out.println(node.getRight().getKey()+ ", ");
+                } else  System.out.println("-");
+
+
+
+            }
     }
 }
