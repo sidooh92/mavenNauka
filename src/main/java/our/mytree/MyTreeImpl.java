@@ -125,8 +125,20 @@ public class MyTreeImpl implements MyTree {
     }
 
     @Override
-    public void showPreOrder(Node node) {
+    public void showPreOrder(Node node)
+    {
+        if(node != null) {
 
+            System.out.print(node.getKey() + ", ");
+            if(node.getLeft() != null) {
+                System.out.print(node.getLeft().getKey() + ", ");
+            } else  System.out.print("-"+ ", ");
+            if(node.getRight() != null) {
+                System.out.println(node.getRight().getKey()+ ", ");
+            } else  System.out.println("-");
+            showPreOrder(node.getLeft());
+            showPreOrder(node.getRight());
+        }
     }
 
     @Override

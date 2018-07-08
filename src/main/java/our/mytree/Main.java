@@ -31,14 +31,14 @@ public class Main {
         myTree.insert(4);
         myTree.insert(7);
         myTree.insert(13);
+//////
+//      myTree.showInOrder(((MyTreeImpl) myTree).root);
+////        myTree.min();
+////        myTree.max();
 ////
-      myTree.showInOrder(((MyTreeImpl) myTree).root);
-//        myTree.min();
-//        myTree.max();
-//
-        myTree.remove(3);
-        myTree.showInOrder(((MyTreeImpl) myTree).root);
-//        myTree.showPreOrder();
+//        myTree.remove(3);
+//        myTree.showInOrder(((MyTreeImpl) myTree).root);
+        myTree.showPreOrder(((MyTreeImpl) myTree).root);
 //        myTree.showPostOrder();
 
 
