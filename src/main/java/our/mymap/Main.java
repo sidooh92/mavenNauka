@@ -13,7 +13,7 @@ public class Main {
         map.put("Czerwiec", asciValueOfMonth("Czerwiec"));
         map.put("Lipiec", asciValueOfMonth("Lipiec"));
 
-        log.info("{}",map.containsKey("Grudzien"));
+        map.put("KWIECIEN", asciValueOfMonth("kwiecien"));
         log.info("{}",map.get("Maj"));
         }
 
