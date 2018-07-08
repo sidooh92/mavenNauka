@@ -1,9 +1,11 @@
 package our.mymap;
 
+import java.util.Arrays;
+
 public class OurMap<K, V> {
     private int size;
     private int baseSize = 10;
-    private OurMapEntry<K,V>[] values;
+    private OurMapEntry<K, V>[] values;
 
 
     public OurMap() {
@@ -12,15 +14,24 @@ public class OurMap<K, V> {
     }
 
     public void put(K key, V value) {
-        //2 przypadki
-            for(int i=0; i < size; i++) {
-                //(1) rekord z takim kluczem juz jest w tabeli  ->
-                // aktualizujemy wartosc
+        boolean updated = false;
+        for (int i = 0; i < size; i++) {
+            if (values[i].getKey().equals(key)) {
+                values[i].setValue(value);
+                updated = true;
             }
-        //(2) nie klucza w tabeli -> wpisujemy nowy rekord w
-        // kolejne wolne miejsce w tabeli
-        value[size++] = new OurMapEntry<K,V>(key,value);
+        }
+        if (!updated) {
+            makeOurArrayBigger();
+            values[size] = new OurMapEntry<K, V>(key, value);
+            size++;
+        }
+    }
 
+    private void makeOurArrayBigger() {
+        if ((size - 2) == values.length) {
+            values = Arrays.copyOf(values, values.length * 4);
+        }
     }
 
     public V get(K key) {
