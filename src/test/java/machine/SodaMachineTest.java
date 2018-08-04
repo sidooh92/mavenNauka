@@ -15,60 +15,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class SodaMachineTest {
     private static Logger log =
             LoggerFactory.getLogger(SodaMachineTest.class);
-
-    //pierwszy test obliczajacy reszte miedzy cena napoju a wrzuconej kwoty
-    @Test
-    @Parameters({
-            "0.01,0.01",
-            "3.99,5.00",
-            "4.99,5.00",
-            "0.99,4.00",
-            "99.99,99.99",
-    })
-    public void shouldSellSodaWhenBalanceIsOk(double priceOfSoda, double balance) throws Exception {
-        //given
-        SodaMachine sodaMachine = new SodaMachine();
-        //when
-        double isSold = sodaMachine.sell(priceOfSoda, balance);
-        //then
-        assertThat(isSold).isLessThanOrEqualTo(balance);
-    }
-
-
-    //zwrocenie calej kwoty w przypakdu braku pieniedzy na zakup
-    @Test
-    @Parameters({
-            "10.00,5.00"
-    })
-    public void shouldAskForMoneySodaWhenBalanceIsWrong(double priceOfSoda, double balance) throws Exception {
-        //given
-        SodaMachine sodaMachine = new SodaMachine();
-        //when
-        double restOfMoney = sodaMachine.sell(priceOfSoda, balance);
-        ///then
-        assertThat(restOfMoney).isEqualTo(balance);
-    }
-
-    //test pokazujacy mapowanie ceny na napoj
-    @Test
-    @Parameters({
-            "1.00,5.00,Coke",
-            "2.00,5.00,Sprite",
-            "3.00,5.00,Beer",
-            "2.59,5.00,Water"
-    })
-    public void shouldReturnSoda(double priceOfSoda,
-                                 double balance, String sodaName) throws Exception {
-        //given
-        SodaMachine sodaMachine = new SodaMachine();
-        //when
-        String nameOfSoda = sodaMachine.
-                payAndGetSoda(priceOfSoda, balance);
-        //then
-        assertThat(nameOfSoda).isEqualTo(sodaName);
-    }
-
-
     //docelowy dzialajacy test w pelni dzialajacej uslugi
     @Test
     public void shouldSellCokeIfEnoughMoney() {
@@ -86,6 +32,7 @@ public class SodaMachineTest {
                 .getBoughtDrink()).isEqualTo(Types.COKE);
     }
 
+    //docelowy dzialajacy test w pelni dzialajacej uslugi
     @Test
     public void shouldNotSellCokeIfNotEnoughMoney() {
         //given
