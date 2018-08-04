@@ -19,7 +19,7 @@ public class SodaMachineTest {
     //docelowy dzialajacy test w pelni dzialajacej uslugi przypadki jak jest wystarczajaco pieniedzy
     @Test
     @Parameters({"5.90,Coke,4.90",
-            "1.00,Coke,1.00",
+            "1.00,Coke,0.00",
             "5.90,Beer,3.90",
             "5.99,Water,3.40",
             "5.10,Sprite,3.10"})
