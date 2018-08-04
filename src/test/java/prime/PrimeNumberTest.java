@@ -15,13 +15,13 @@ public class PrimeNumberTest {
 
     private static Logger log =
             LoggerFactory.getLogger(PrimeNumberTest.class);
-
-    //TODO podpiac junit params do pom'a
-    //TODO refaktor na test z parametrami
-
-
     @Test
-    @Parameters({"17, false"})
+    @Parameters({"1, false",
+            "2, true",
+            "3, true",
+            "4, false",
+            "5, true",
+            "6, false" })
     public void shouldCheckIf1IsPrimeNumber(int number, boolean valid) {
         PrimeNumberUtils primeNumberUtils = new PrimeNumberUtils();
         //when
