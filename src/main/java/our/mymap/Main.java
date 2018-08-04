@@ -1,27 +1,17 @@
 package our.mymap;
 
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
+import static java.lang.Thread.sleep;
+
+//@Slf4j
 public class Main {
-    public static void main(String[] args) {
-        OurMapImpl<String, Integer> map = new OurMapImpl<>();
-        map.put("Luty", asciValueOfMonth("Luty"));
-        map.put("Maj", asciValueOfMonth("Maj"));
-        map.put("Czerwiec", asciValueOfMonth("Czerwiec"));
-        map.put("Lipiec", asciValueOfMonth("Lipiec"));
-        map.put("KWIECIEN", asciValueOfMonth("kwiecien"));
+    public static void main(String[] args) throws InterruptedException {
+        final int SIZE = 2004;
+        long[][] l = new long[SIZE][];
+        for (int i = 0; i < 100000; i++) {
+                sleep(100);
+                l[i] = new long[SIZE];
 
-        map.remove("Maj");
-
-        log.info("{}",map.get("Maj"));
         }
-
-    private static Integer asciValueOfMonth(String month) {
-        int sum = 0;
-        byte[] ascii = month.getBytes();
-        for (byte anAscii : ascii) sum += anAscii;
-        return sum;
     }
-
 }
