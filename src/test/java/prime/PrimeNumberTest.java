@@ -31,4 +31,10 @@ public class PrimeNumberTest {
     }
 
 
+    @Test
+    public void  shouldThrowExpectionIfNumberIsLessThanTwo() {
+
+    }
+
+
 }
