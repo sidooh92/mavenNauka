@@ -1,5 +1,7 @@
 package prime;
 
+import exceptions.PrimeException;
+
 public class PrimeNumberUtils {
 
 
@@ -13,5 +15,7 @@ public class PrimeNumberUtils {
             }
         }
         return true;
+        //throw new PrimeException("asd")
+
     }
 }
