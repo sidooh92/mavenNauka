@@ -45,5 +45,15 @@ public class PrimeNumberTest {
                 .hasMessage("Error");
     }
 
+    @Test(expected = PrimeException.class)
+    public void shouldThrowExpectionIfNumberIsLessThanTwoVersion2() throws PrimeException {
+        //given
+        int number = -10;
+        PrimeNumberUtils primeNumberUtils = new PrimeNumberUtils();
+
+        //when
+         primeNumberUtils.isPrime(number);
+    }
+
 
 }
