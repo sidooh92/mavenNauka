@@ -15,15 +15,8 @@ public class DrinkStatus {
         return boughtDrink;
     }
 
-    public void setBoughtDrink(Types boughtDrink) {
-        this.boughtDrink = boughtDrink;
-    }
-
     public double getBalanceAfterDrink() {
         return balanceAfterDrink;
     }
 
-    public void setBalanceAfterDrink(double balanceAfterDrink) {
-        this.balanceAfterDrink = balanceAfterDrink;
-    }
 }

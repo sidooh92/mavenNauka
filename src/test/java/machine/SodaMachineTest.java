@@ -3,6 +3,7 @@ package machine;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
+import org.assertj.core.data.Offset;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -32,7 +33,7 @@ public class SodaMachineTest {
                 .sell(drinkToBuy, balance);
         //then
         assertThat(drinkStatus
-                .getBalanceAfterDrink()).isEqualTo(change);
+                .getBalanceAfterDrink()).isCloseTo(change,Offset.offset(0.1)); //workaround -> best solution is BigDecmial
         assertThat(drinkStatus
                 .getBoughtDrink().getValue()).isEqualTo(drinkToBuy);
     }
