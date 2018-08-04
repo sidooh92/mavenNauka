@@ -1,8 +1,8 @@
 package our;
 
 import lotr.FellowshipOfTheRing;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import static org.assertj.core.api.Assertions.*;
@@ -11,7 +11,7 @@ public class MyFirstTest {
     private static Logger log = LoggerFactory.getLogger(MyFirstTest.class);
 
 
-    @DisplayName("Single test successful")
+
     @Test
     void testSingleSuccessTest() {
         log.info("Success");

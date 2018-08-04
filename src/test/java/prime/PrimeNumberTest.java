@@ -1,78 +1,34 @@
 package prime;
 
 
-import org.junit.jupiter.api.Test;
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
+@RunWith(JUnitParamsRunner.class)
 public class PrimeNumberTest {
 
     private static Logger log =
             LoggerFactory.getLogger(PrimeNumberTest.class);
 
-    //TODO napisac logike
-    //TODO refaktor
-    //TODO podpiac junit params
+    //TODO podpiac junit params do pom'a
     //TODO refaktor na test z parametrami
 
+
     @Test
-    void shouldCheckIf1IsPrimeNumber() {
-        //given
-        int number =1;
+    @Parameters({"17, false"})
+    public void shouldCheckIf1IsPrimeNumber(int number, boolean valid) {
         PrimeNumberUtils primeNumberUtils = new PrimeNumberUtils();
         //when
         boolean isPrime = primeNumberUtils.isPrime(number);
         //then
-        assertThat(isPrime).isFalse();
+        assertThat(isPrime).isEqualTo(valid);
     }
 
-    @Test
-    void shouldCheckIf2IsPrimeNumber() {
-        //given
-        int number =2;
-        PrimeNumberUtils primeNumberUtils = new PrimeNumberUtils();
-        //when
-        boolean isPrime = primeNumberUtils.isPrime(number);
-        //then
-        assertThat(isPrime).isTrue();
-    }
-
-
-    @Test
-    void shouldCheckIf3IsPrimeNumber() {
-        //given
-        int number =3;
-        PrimeNumberUtils primeNumberUtils = new PrimeNumberUtils();
-        //when
-        boolean isPrime = primeNumberUtils.isPrime(number);
-        //then
-        assertThat(isPrime).isTrue();
-    }
-
-
-    @Test
-    void shouldCheckIf4IsPrimeNumber() {
-        //given
-        int number =4;
-        PrimeNumberUtils primeNumberUtils = new PrimeNumberUtils();
-        //when
-        boolean isPrime = primeNumberUtils.isPrime(number);
-        //then
-        assertThat(isPrime).isFalse();
-    }
-
-    @Test
-    void shouldCheckIf5IsPrimeNumber() {
-        //given
-        int number =5;
-        PrimeNumberUtils primeNumberUtils = new PrimeNumberUtils();
-        //when
-        boolean isPrime = primeNumberUtils.isPrime(number);
-        //then
-        assertThat(isPrime).isTrue();
-    }
 
 }
