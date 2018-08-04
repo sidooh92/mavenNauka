@@ -9,42 +9,51 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @RunWith(JUnitParamsRunner.class)
 public class SodaMachineTest {
     private static Logger log =
             LoggerFactory.getLogger(SodaMachineTest.class);
-    //docelowy dzialajacy test w pelni dzialajacej uslugi
+
+
+    //docelowy dzialajacy test w pelni dzialajacej uslugi przypadki jak jest wystarczajaco pieniedzy
     @Test
-    public void shouldSellCokeIfEnoughMoney() {
+    @Parameters({"5.90,Coke,4.90",
+            "1.00,Coke,1.00",
+            "5.90,Beer,3.90",
+            "5.99,Water,3.40",
+            "5.10,Sprite,3.10"})
+    public void shouldSellCokeIfEnoughMoney(double balance, String drinkToBuy, double change) {
         //given
-        double balance = 5.00;
-        String drinkToBuy = "Coke";
         SodaMachine sodaMachine = new SodaMachine();
+
         //when
         DrinkStatus drinkStatus = sodaMachine
                 .sell(drinkToBuy, balance);
         //then
         assertThat(drinkStatus
-                .getBalanceAfterDrink()).isEqualTo(4.00);
+                .getBalanceAfterDrink()).isEqualTo(change);
         assertThat(drinkStatus
-                .getBoughtDrink()).isEqualTo(Types.COKE);
+                .getBoughtDrink().getValue()).isEqualTo(drinkToBuy);
     }
 
-    //docelowy dzialajacy test w pelni dzialajacej uslugi
+    //docelowy dzialajacy test w pelni dzialajacej uslugi przypadki jak brakuje pieniedzy
     @Test
-    public void shouldNotSellCokeIfNotEnoughMoney() {
+    @Parameters({"0.90,Coke",
+            "0.00,Coke",
+            "1.90,Beer",
+            "0.99,Water",
+            "1.10,Sprite"})
+    public void shouldNotSellCokeIfNotEnoughMoney(double balance, String drinkToBuy) {
         //given
-        double balance = 0.90;
-        String drinkToBuy = "Coke";
         SodaMachine sodaMachine = new SodaMachine();
+
         //when
         DrinkStatus drinkStatus = sodaMachine
                 .sell(drinkToBuy, balance);
         //then
         assertThat(drinkStatus
-                .getBalanceAfterDrink()).isEqualTo(0.90);
+                .getBalanceAfterDrink()).isEqualTo(balance);
         assertThat(drinkStatus
                 .getBoughtDrink()).isNull();
     }
