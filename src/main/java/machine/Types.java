@@ -1,5 +1,7 @@
 package machine;
 
+
+//enum zawierajacy rodzaje napojow dla maszyny
 public enum Types {
     COKE("Coke"),
     BEER("Beer"),

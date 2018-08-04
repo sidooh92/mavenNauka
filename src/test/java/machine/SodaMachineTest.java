@@ -16,6 +16,7 @@ public class SodaMachineTest {
     private static Logger log =
             LoggerFactory.getLogger(SodaMachineTest.class);
 
+    //pierwszy test obliczajacy reszte miedzy cena napoju a wrzuconej kwoty
     @Test
     @Parameters({
             "0.01,0.01",
@@ -33,6 +34,8 @@ public class SodaMachineTest {
         assertThat(isSold).isLessThanOrEqualTo(balance);
     }
 
+
+    //zwrocenie calej kwoty w przypakdu braku pieniedzy na zakup
     @Test
     @Parameters({
             "10.00,5.00"
@@ -46,7 +49,7 @@ public class SodaMachineTest {
         assertThat(restOfMoney).isEqualTo(balance);
     }
 
-
+    //test pokazujacy mapowanie ceny na napoj
     @Test
     @Parameters({
             "1.00,5.00,Coke",
@@ -66,6 +69,7 @@ public class SodaMachineTest {
     }
 
 
+    //docelowy dzialajacy test w pelni dzialajacej uslugi
     @Test
     public void shouldSellCokeIfEnoughMoney() {
         //given
@@ -80,6 +84,22 @@ public class SodaMachineTest {
                 .getBalanceAfterDrink()).isEqualTo(4.00);
         assertThat(drinkStatus
                 .getBoughtDrink()).isEqualTo(Types.COKE);
+    }
+
+    @Test
+    public void shouldNotSellCokeIfNotEnoughMoney() {
+        //given
+        double balance = 0.90;
+        String drinkToBuy = "Coke";
+        SodaMachine sodaMachine = new SodaMachine();
+        //when
+        DrinkStatus drinkStatus = sodaMachine
+                .sell(drinkToBuy, balance);
+        //then
+        assertThat(drinkStatus
+                .getBalanceAfterDrink()).isEqualTo(5.00);
+        assertThat(drinkStatus
+                .getBoughtDrink()).isNull();
     }
 
 }
