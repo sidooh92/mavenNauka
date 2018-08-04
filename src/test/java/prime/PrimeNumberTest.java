@@ -32,7 +32,7 @@ public class PrimeNumberTest {
 
 
     @Test
-    public void  shouldThrowExpectionIfNumberIsLessThanTwo() {
+    public void shouldThrowExpectionIfNumberIsLessThanTwo() {
 
     }
 
