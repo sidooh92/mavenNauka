@@ -44,7 +44,7 @@ public class SodaMachineTest {
                 .sell(drinkToBuy, balance);
         //then
         assertThat(drinkStatus
-                .getBalanceAfterDrink()).isEqualTo(5.00);
+                .getBalanceAfterDrink()).isEqualTo(0.90);
         assertThat(drinkStatus
                 .getBoughtDrink()).isNull();
     }
