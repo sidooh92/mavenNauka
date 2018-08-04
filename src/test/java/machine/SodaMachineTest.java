@@ -24,11 +24,11 @@ public class SodaMachineTest {
             "0.99,4.00",
             "99.99,99.99",
     })
-    public void shouldSellSodaWhenBalanceIsOk(double priceOfSoda, double balance ) throws Exception {
+    public void shouldSellSodaWhenBalanceIsOk(double priceOfSoda, double balance) throws Exception {
         //given
         SodaMachine sodaMachine = new SodaMachine();
         //when
-        double isSold = sodaMachine.sell(priceOfSoda,balance);
+        double isSold = sodaMachine.sell(priceOfSoda, balance);
         //then
         assertThat(isSold).isLessThanOrEqualTo(balance);
     }
@@ -37,11 +37,11 @@ public class SodaMachineTest {
     @Parameters({
             "10.00,5.00"
     })
-    public void shouldAskForMoneySodaWhenBalanceIsWrong(double priceOfSoda, double balance ) throws Exception {
+    public void shouldAskForMoneySodaWhenBalanceIsWrong(double priceOfSoda, double balance) throws Exception {
         //given
         SodaMachine sodaMachine = new SodaMachine();
         //when
-        double restOfMoney = sodaMachine.sell(priceOfSoda,balance);
+        double restOfMoney = sodaMachine.sell(priceOfSoda, balance);
         ///then
         assertThat(restOfMoney).isEqualTo(balance);
     }
@@ -55,7 +55,7 @@ public class SodaMachineTest {
             "2.59,5.00,Water"
     })
     public void shouldReturnSoda(double priceOfSoda,
-                                 double balance, String sodaName ) throws Exception {
+                                 double balance, String sodaName) throws Exception {
         //given
         SodaMachine sodaMachine = new SodaMachine();
         //when
@@ -63,6 +63,23 @@ public class SodaMachineTest {
                 payAndGetSoda(priceOfSoda, balance);
         //then
         assertThat(nameOfSoda).isEqualTo(sodaName);
+    }
+
+
+    @Test
+    public void shouldSellCokeIfEnoughMoney() {
+        //given
+        double balance = 5.00;
+        String drinkToBuy = "Coke";
+        SodaMachine sodaMachine = new SodaMachine();
+        //when
+        DrinkStatus drinkStatus = sodaMachine
+                .sell(drinkToBuy, balance);
+        //then
+        assertThat(drinkStatus
+                .getBalanceAfterDrink()).isEqualTo(4.00);
+        assertThat(drinkStatus
+                .getBoughtDrink()).isEqualTo(Types.COKE);
     }
 
 }

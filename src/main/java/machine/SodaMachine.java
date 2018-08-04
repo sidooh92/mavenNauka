@@ -15,4 +15,11 @@ public class SodaMachine {
         else if(priceOfSoda == 2.59) return Types.WATER.getValue();
         return "";
     }
+
+    public DrinkStatus sell(String types, double balance)
+    {
+
+
+        return null;
+    }
 }
