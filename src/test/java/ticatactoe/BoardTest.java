@@ -1,4 +1,4 @@
-package ticatactoe.exception;
+package ticatactoe;
 
 import junitparams.JUnitParamsRunner;
 import org.junit.Test;
@@ -6,6 +6,10 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ticatactoe.Board;
+import ticatactoe.exception.OutOfTablePositionException;
+import ticatactoe.exception.WrongMoveException;
+import ticatactoe.exception.WrongPositionException;
+import ticatactoe.exception.WrongSymbolException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

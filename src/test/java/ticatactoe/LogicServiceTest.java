@@ -1,4 +1,4 @@
-package ticatactoe.exception;
+package ticatactoe;
 import junitparams.JUnitParamsRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
