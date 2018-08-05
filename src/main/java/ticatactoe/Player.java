@@ -4,13 +4,11 @@ import java.util.Scanner;
 
 public class Player {
 
-
     private String type;
 
     public Player(String type) {
         this.type = type;
     }
-
 
     public String getType() {
         return type;
