@@ -10,7 +10,6 @@ import ticatactoe.Board;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(JUnitParamsRunner.class)
-
 public class BoardTest {
 
     private static Logger log =
