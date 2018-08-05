@@ -1,17 +1,11 @@
-package tictactoe;
+package ticatactoe.exception;
 
 import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
-import machine.SodaMachineTest;
-import org.assertj.core.data.Offset;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ticatactoe.Board;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -43,7 +37,7 @@ public class BoardTest {
     }
 
     @Test
-    public void shouldAddCorrectMove() {
+    public void shouldAddCorrectMove() throws WrongMoveException, WrongSymbolException, WrongPositionException, OutOfTablePositionException {
         //given
         Board board = new Board();
         board.emptyTable();
@@ -54,7 +48,7 @@ public class BoardTest {
     }
 
     @Test(expected = WrongMoveException.class)
-    public void shouldNotAddWrongMoveSameTwice() {
+    public void shouldNotAddWrongMoveSameTwice() throws WrongMoveException, WrongSymbolException, WrongPositionException {
         //given
         Board board = new Board();
         board.emptyTable();
@@ -64,17 +58,17 @@ public class BoardTest {
     }
 
     @Test(expected = WrongSymbolException.class)
-    public void shouldNotAddWrongMoveWrongSymbol() {
+    public void shouldNotAddWrongMoveWrongSymbol() throws WrongMoveException, WrongSymbolException, WrongPositionException {
         //given
         Board board = new Board();
         board.emptyTable();
         //when
-        board.move(1,1,"A");
+        board.move(1,1,"Z");
     }
 
 
     @Test(expected = WrongPositionException.class)
-    public void shouldNotAddWrongMoveWrongPositions() {
+    public void shouldNotAddWrongMoveWrongPositions() throws WrongMoveException, WrongSymbolException, WrongPositionException {
         //given
         Board board = new Board();
         board.emptyTable();
@@ -84,7 +78,7 @@ public class BoardTest {
 
 
     @Test
-    public void shouldGetValueOfSelectedPositionInBoard() {
+    public void shouldGetValueOfSelectedPositionInBoard() throws OutOfTablePositionException {
         //given
         Board board = new Board();
         //when
@@ -94,10 +88,10 @@ public class BoardTest {
     }
 
     @Test(expected = OutOfTablePositionException.class)
-    public void shouldNotGetValueOfSelectedPositionOutBoard() {
+    public void shouldNotGetValueOfSelectedPositionOutBoard() throws OutOfTablePositionException {
         //given
         Board board = new Board();
         //when
-        assertThat(board.getPostionValue(4,4));
+        board.getPostionValue(4,4);
     }
 }
