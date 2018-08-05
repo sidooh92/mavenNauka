@@ -32,7 +32,7 @@ public class BoardTest {
     @Test
     public void shouldCheckIfBoardIsEmpty()
     {
-    //given
+        //given
         Board board = new Board();
         String[][] correctTableState = {{"", "", ""},{"", "", ""},{"", "", ""}};
         //when
@@ -44,33 +44,60 @@ public class BoardTest {
 
     @Test
     public void shouldAddCorrectMove() {
-
+        //given
+        Board board = new Board();
+        board.emptyTable();
+        //when
+        board.move(1,1,"X");
+        //then
+        assertThat(board.getPostionValue(1,1)).isEqualTo("X");
     }
 
-    @Test
+    @Test(expected = WrongMoveException.class)
     public void shouldNotAddWrongMoveSameTwice() {
-
+        //given
+        Board board = new Board();
+        board.emptyTable();
+        //when
+        board.move(1,1,"X");
+        board.move(1,1,"X");
     }
 
-    @Test
+    @Test(expected = WrongSymbolException.class)
     public void shouldNotAddWrongMoveWrongSymbol() {
-
+        //given
+        Board board = new Board();
+        board.emptyTable();
+        //when
+        board.move(1,1,"A");
     }
 
 
-    @Test
+    @Test(expected = WrongPositionException.class)
     public void shouldNotAddWrongMoveWrongPositions() {
-
+        //given
+        Board board = new Board();
+        board.emptyTable();
+        //when
+        board.move(4,1,"X");
     }
 
 
     @Test
     public void shouldGetValueOfSelectedPositionInBoard() {
-
+        //given
+        Board board = new Board();
+        //when
+        board.emptyTable();
+        //then
+        assertThat(board.getPostionValue(1,1)).isEqualTo("");
     }
 
-    @Test
+    @Test(expected = OutOfTablePositionException.class)
     public void shouldNotGetValueOfSelectedPositionOutBoard() {
-
+        //given
+        Board board = new Board();
+        //when
+        assertThat(board.getPostionValue(4,4));
     }
 }
