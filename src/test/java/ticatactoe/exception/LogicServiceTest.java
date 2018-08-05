@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ticatactoe.Board;
+import ticatactoe.LogicService;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,35 +17,49 @@ public class LogicServiceTest {
 
     @Test
     public void shouldCheckEmptyBoard() {
-        // , ,
-        //o   O
-        //o   O
-        //false
+        String[][] correctTableState = {{"X", "", "X"},
+                {"O", "", ""},
+                {"", "O", ""}};
+        LogicService logicService = new LogicService();
+        //when
+        //then
+        assertThat(logicService.check(correctTableState)).isNull();
     }
 
     @Test
     public void shouldCheckRowWinConditions() {
-        //X,x,x
-        //o O O
-        //o O O
-        //true
+        //given
+        String[][] correctTableState = {{"X", "X", "X"},
+                                         {"O", "", ""},
+                                          {"", "O", ""}};
+        LogicService logicService = new LogicService();
+        //when
+        //then
+        assertThat(logicService.check(correctTableState)).isEqualTo("X");
     }
 
     @Test
     public void shouldCheckColumnWinConditions() {
-        //X,O,O
-        //X O O
-        //X O O
-        //true
+        //given
+        String[][] correctTableState = {{"X", "O", "O"},
+                {"X", "", ""},
+                {"X", "O", ""}};
+        LogicService logicService = new LogicService();
+        //when
+        //then
+        assertThat(logicService.check(correctTableState)).isEqualTo("X");
     }
 
     @Test
     public void shouldCheckCrossWinConditions() {
-        //X,O,O
-        //o x O
-        //o O x
-        //true
-
+        //given
+        String[][] correctTableState = {{"X", "O", "O"},
+                {"O", "X", ""},
+                {"X", "O", "X"}};
+        LogicService logicService = new LogicService();
+        //when
+        //then
+        assertThat(logicService.check(correctTableState)).isEqualTo("X");
     }
 
 }
